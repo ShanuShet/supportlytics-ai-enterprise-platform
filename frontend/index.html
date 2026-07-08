@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        Supportlytics AI Enterprise
+
+    </title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Chart JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+</head>
+
+<body>
+
+    <div id="loading-screen">
+
+    <div class="loader-box">
+
+        <h1>Supportlytics AI Enterprise</h1>
+
+        <p>Initializing AI Multi-Agent System...</p>
+
+        <div class="loader-bar">
+
+            <div id="loader-progress"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="app-container">
+
+<!-- ==========================================
+SIDEBAR
+=========================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand-header">
+
+        <div class="brand-logo">
+
+            <i class="fa-solid fa-brain"></i>
+
+        </div>
+
+        <div class="brand-title">
+
+            <h2>
+
+                Support<span>lytics</span>
+
+            </h2>
+
+            <div id="live-clock" class="live-clock"></div>
+
+            <div class="badge-sub">
+
+                Enterprise AI Platform
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <nav class="nav-menu">
+
+        <a class="nav-link active"
+           data-tab="dashboard">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Dashboard
+
+        </a>
+
+        <a class="nav-link"
+           data-tab="tickets">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            Tickets
+
+            <span
+                class="badge-count"
+                id="ticket-count">
+
+                0
+
+            </span>
+
+        </a>
+
+        <a class="nav-link"
+           data-tab="analytics">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            Analytics
+
+        </a>
+
+        <a class="nav-link"
+           data-tab="prediction">
+
+            <i class="fa-solid fa-robot"></i>
+
+            AI Prediction
+
+        </a>
+
+        <a class="nav-link"
+           data-tab="simulator">
+
+            <i class="fa-solid fa-wave-square"></i>
+
+            Simulator
+
+        </a>
+
+        <a class="nav-link"
+           data-tab="upload">
+
+            <i class="fa-solid fa-upload"></i>
+
+            Dataset Upload
+
+        </a>
+
+    </nav>
+
+    <div class="system-status-card">
+
+        <div
+            class="status-indicator online">
+
+        </div>
+
+        <div class="status-info">
+
+            <div class="status-title">
+
+                Backend
+
+            </div>
+
+            <div
+                id="server-status"
+                class="status-detail">
+
+                ONLINE
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<!-- ==========================================
+MAIN CONTENT
+=========================================== -->
+
+<main class="main-content">
+
+<header class="top-header">
+
+<div class="page-title-section">
+
+<h1>
+
+Supportlytics AI Enterprise
+
+</h1>
+
+<p>
+
+Enterprise Intelligent IT Operations Platform
+
+</p>
+
+</div>
+
+<div class="header-actions">
+
+<button
+
+id="btn-refresh"
+
+class="btn btn-primary">
+
+<i class="fa-solid fa-rotate"></i>
+
+Refresh
+
+</button>
+
+<div class="user-profile">
+
+<img
+src="https://i.pravatar.cc/100?img=12"
+alt="User">
+
+<span>
+
+Administrator
+
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+<div class="tab-content-container">
+
+<!-- ==========================================
+DASHBOARD
+=========================================== -->
+
+<section
+
+id="tab-dashboard"
+
+class="tab-page active">
+
+<!-- ==============================
+METRICS
+============================== -->
+
+<div class="metrics-grid">
+
+<div class="metric-card">
+
+<div class="metric-icon purple">
+
+<i class="fa-solid fa-ticket"></i>
+
+</div>
+
+<div>
+
+<div class="metric-label">
+
+Total Tickets
+
+</div>
+
+<div
+
+id="metric-total-tickets"
+
+class="metric-value">
+
+0
+
+</div>
+
+<span
+    id="metric-live-status"
+    class="metric-trend positive">
+    Live
+</span>
+
+</div>
+
+</div>
+
+<div class="metric-card">
+
+<div class="metric-icon green">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<div>
+
+<div class="metric-label">
+
+Resolved
+
+</div>
+
+<div
+
+id="metric-resolved"
+
+class="metric-value">
+
+0
+
+</div>
+
+<span
+    id="metric-resolution-rate"
+    class="metric-trend positive">
+    0%
+</span>
+
+</div>
+
+</div>
+
+<div class="metric-card">
+
+<div class="metric-icon amber">
+
+<i class="fa-solid fa-user-shield"></i>
+
+</div>
+
+<div>
+
+<div class="metric-label">
+
+HITL Holds
+
+</div>
+
+<div
+
+id="metric-hitl-count"
+
+class="metric-value">
+
+0
+
+</div>
+
+<span
+
+class="metric-trend warning">
+
+Human Review
+
+</span>
+
+</div>
+
+</div>
+
+<div class="metric-card">
+
+<div class="metric-icon red">
+
+<i class="fa-solid fa-shield-virus"></i>
+
+</div>
+
+<div>
+
+<div class="metric-label">
+
+Threats Blocked
+
+</div>
+
+<div
+
+id="metric-security-blocks"
+
+class="metric-value">
+
+0
+
+</div>
+
+<span
+
+class="metric-trend shield">
+
+Protected
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="metric-card">
+
+    <div class="metric-title">
+        AI System Health
+    </div>
+
+    <div
+        id="ai-health"
+        class="metric-value"
+    >
+        Healthy
+    </div>
+
+    <div class="metric-footer">
+        All Agents Operational
+    </div>
+
+</div>
+
+<!-- ==============================
+DASHBOARD GRID
+============================== -->
+
+<div class="dashboard-widgets-grid">
+
+<div class="glass-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-microchip"></i>
+
+AI Multi-Agent Workflow
+
+</h3>
+
+<span class="tag-live">
+
+LIVE
+
+</span>
+
+</div>
+
+<div class="glass-panel">
+
+    <div class="panel-header">
+
+        <h3>
+            <i class="fa-solid fa-clock"></i>
+            Live AI Activity
+        </h3>
+
+        <span class="tag-live">LIVE</span>
+
+    </div>
+
+    <div id="activity-feed" class="activity-feed">
+
+    </div>
+
+</div>
+
+<div class="agent-nodes-container">
+
+<div class="agent-node">
+
+<div class="node-icon">
+
+<i class="fa-solid fa-inbox"></i>
+
+</div>
+
+<h4>
+
+Ingestion
+
+</h4>
+
+<p>
+
+Receives Tickets
+
+</p>
+
+<span class="node-badge">
+
+ACTIVE
+
+</span>
+
+</div>
+
+<div class="node-connector"></div>
+
+<div class="agent-node">
+
+<div class="node-icon">
+
+<i class="fa-solid fa-brain"></i>
+
+</div>
+
+<h4>
+
+AI Analysis
+
+</h4>
+
+<p>
+
+Classification
+
+</p>
+
+<span class="node-badge">
+
+RUNNING
+
+</span>
+
+</div>
+
+<div class="node-connector"></div>
+
+<div class="agent-node">
+
+<div class="node-icon">
+
+<i class="fa-solid fa-robot"></i>
+
+</div>
+
+<h4>
+
+Prediction
+
+</h4>
+
+<p>
+
+Priority & SLA
+
+</p>
+
+<span class="node-badge">
+
+ONLINE
+
+</span>
+
+</div>
+
+<div class="node-connector"></div>
+
+<div class="agent-node">
+
+<div class="node-icon">
+
+<i class="fa-solid fa-user-check"></i>
+
+</div>
+
+<h4>
+
+Approval
+
+</h4>
+
+<p>
+
+HITL Review
+
+</p>
+
+<span class="node-badge">
+
+READY
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="glass-panel recommendation-card">
+
+    <div class="panel-header">
+
+        <h3>
+
+            <i class="fa-solid fa-robot"></i>
+
+            AI Recommendation Agent
+
+        </h3>
+
+    </div>
+
+    <div
+        id="recommendation-box"
+        class="recommendation-box">
+
+        Waiting for AI recommendations...
+
+    </div>
+
+    <button
+        id="btn-export-report"
+        class="btn btn-primary">
+
+        <i class="fa-solid fa-file-pdf"></i>
+
+        Export Dashboard Report
+
+    </button>
+
+</div>
+
+<!-- ==============================
+CATEGORY PANEL
+============================== -->
+
+<div class="glass-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-layer-group"></i>
+
+Incident Categories
+
+</h3>
+
+</div>
+
+<div
+
+id="category-distribution-list"
+
+class="category-list">
+
+<div class="cat-item">
+
+<span class="cat-name">
+
+Loading...
+
+</span>
+
+<span class="cat-count">
+
+0
+
+</span>
+
+</div>
+
+</div>
+
+<hr style="margin:20px 0;border-color:rgba(255,255,255,.08);">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+TICKETS WORKSPACE
+=========================================== -->
+
+<section
+
+id="tab-tickets"
+
+class="tab-page">
+
+<div class="tickets-workspace">
+
+<!-- =====================================
+LEFT PANEL
+===================================== -->
+
+<div class="glass-panel ticket-list-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-ticket"></i>
+
+Support Tickets
+
+</h3>
+
+<button
+
+id="btn-refresh-tickets"
+
+class="btn btn-secondary">
+
+<i class="fa-solid fa-rotate"></i>
+
+Refresh
+
+</button>
+
+</div>
+
+<div class="form-group">
+
+<input
+
+type="text"
+
+id="ticket-search"
+
+class="form-control"
+
+placeholder="Search Ticket...">
+
+</div>
+
+<div class="form-group">
+
+<select id="priority-filter" class="form-control">
+
+    <option value="ALL">All Priorities</option>
+
+    <option value="LOW">LOW</option>
+
+    <option value="MEDIUM">MEDIUM</option>
+
+    <option value="HIGH">HIGH</option>
+
+    <option value="CRITICAL">CRITICAL</option>
+
+</select>
+
+</div>
+
+<div
+
+id="ticket-cards-list"
+
+class="ticket-cards-scroll">
+
+<!-- Dynamic Tickets -->
+
+<div class="ticket-card-item">
+
+<div class="ticket-card-header">
+
+<div class="ticket-id">
+
+TICK-0001
+
+</div>
+
+<div class="badge-status RESOLVED">
+
+RESOLVED
+
+</div>
+
+</div>
+
+<div class="ticket-card-title">
+
+Loading Tickets...
+
+</div>
+
+<div class="ticket-card-meta">
+
+<span>
+
+Network
+
+</span>
+
+<span>
+
+India
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================
+RIGHT PANEL
+===================================== -->
+
+<div
+
+id="ticket-detail-view"
+
+class="glass-panel ticket-detail-panel">
+
+<div class="detail-header">
+
+<div class="detail-title">
+
+Ticket Details
+
+</div>
+
+<div class="detail-tags">
+
+<div class="tag-badge">
+
+Priority
+
+</div>
+
+<div class="tag-badge">
+
+Status
+
+</div>
+
+<div class="tag-badge">
+
+Country
+
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<p>
+
+Select a ticket from the left panel to view
+complete AI analysis.
+
+</p>
+
+</div>
+
+<!-- =====================================
+AGENT TRACE
+===================================== -->
+
+<div class="detail-section-title">
+
+<i class="fa-solid fa-brain"></i>
+
+AI Agent Decision Trace
+
+</div>
+
+<div class="trace-timeline">
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+Ticket Ingestion Agent
+
+</div>
+
+<div class="step-details">
+
+Waiting for ticket...
+
+</div>
+
+</div>
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+Classification Agent
+
+</div>
+
+<div class="step-details">
+
+No analysis yet.
+
+</div>
+
+</div>
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+Prediction Agent
+
+</div>
+
+<div class="step-details">
+
+Prediction pending.
+
+</div>
+
+</div>
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+Approval Agent
+
+</div>
+
+<div class="step-details">
+
+Awaiting review.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+HITL QUEUE
+=========================================== -->
+
+<section
+
+id="tab-hitl"
+
+class="tab-page">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-user-check"></i>
+
+Human-In-The-Loop Queue
+
+</h3>
+
+</div>
+
+<div
+
+id="hitl-queue"
+
+class="hitl-queue-grid">
+
+<div class="hitl-card">
+
+<div class="hitl-header">
+
+<h4>
+
+Awaiting Review
+
+</h4>
+
+<div class="risk-badge">
+
+HIGH
+
+</div>
+
+</div>
+
+<p>
+
+AI has flagged this ticket for manual
+verification.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+ANALYTICS
+=========================================== -->
+
+<section id="tab-analytics" class="tab-page">
+
+    <h2 class="page-title">
+        Executive Summary
+    </h2>
+
+    <div class="analytics-card">
+
+        <h3>🤖 AI Insights</h3>
+
+        <div id="ai-insights"></div>
+
+    </div>
+
+    <!-- KPI CARDS -->
+
+    <div class="analytics-metrics-grid">
+
+        <div class="glass-panel metric-card">
+
+            <h3>Total Tickets</h3>
+
+            <div
+                class="metric-value"
+                id="analytics-total"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="glass-panel metric-card">
+
+            <h3>Open Tickets</h3>
+
+            <div
+                class="metric-value"
+                id="analytics-open"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="glass-panel metric-card">
+
+            <h3>Closed Tickets</h3>
+
+            <div
+                class="metric-value"
+                id="analytics-closed"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="glass-panel metric-card">
+
+            <h3>Closure Rate</h3>
+
+            <div
+                class="metric-value"
+                id="analytics-rate"
+            >
+                0%
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CHART ROW 1 -->
+
+    <div class="analytics-grid">
+
+        <div class="glass-panel">
+
+            <h3>Tickets by Status</h3>
+
+            <canvas
+                id="statusChart"
+            ></canvas>
+
+        </div>
+
+        <div class="glass-panel">
+
+            <h3>Tickets by Priority</h3>
+
+            <canvas id="analyticsPriorityChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- CHART ROW 2 -->
+
+    <div class="analytics-grid">
+
+        <div class="glass-panel">
+
+            <h3>Category Distribution</h3>
+
+            <canvas
+                id="categoryChart"
+            ></canvas>
+
+        </div>
+
+        <div class="glass-panel">
+
+            <h3>Ticket Trend</h3>
+
+            <canvas
+                id="trendChart"
+            ></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+AI PREDICTION
+=========================================== -->
+
+<section
+
+id="tab-prediction"
+
+class="tab-page">
+
+<div class="glass-panel form-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-robot"></i>
+
+AI Prediction Engine
+
+</h3>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Ticket ID
+
+</label>
+
+<input
+
+id="prediction-ticket-id"
+
+class="form-control"
+
+placeholder="Enter Ticket ID">
+
+</div>
+
+<div class="quick-presets">
+
+<span>
+
+Quick Test
+
+</span>
+
+<button
+
+class="preset-btn"
+
+onclick="document.getElementById('prediction-ticket-id').value='TICK-0001'">
+
+Sample Ticket
+
+</button>
+
+</div>
+
+<div class="button-group">
+
+<button
+
+id="btn-predict-priority"
+
+class="btn btn-primary">
+
+Priority
+
+</button>
+
+<button
+
+id="btn-predict-risk"
+
+class="btn btn-secondary">
+
+Risk
+
+</button>
+
+<button
+
+id="btn-predict-sla"
+
+class="btn btn-success">
+
+SLA
+
+</button>
+
+<button
+
+id="btn-predict-resolution"
+
+class="btn btn-primary">
+
+Resolution
+
+</button>
+
+</div>
+
+<br>
+
+<div
+
+id="prediction-result"
+
+class="glass-panel">
+
+Waiting for AI prediction...
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+SIMULATOR
+=========================================== -->
+
+<section
+
+id="tab-simulator"
+
+class="tab-page">
+
+<div class="glass-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-wave-square"></i>
+
+Traffic Simulator
+
+</h3>
+
+</div>
+
+<p>
+
+Generate synthetic IT tickets for testing.
+
+</p>
+
+<br>
+
+<div class="button-group">
+
+<button
+
+id="btn-start-simulator"
+
+class="btn btn-success">
+
+<i class="fa-solid fa-play"></i>
+
+Start
+
+</button>
+
+<button
+
+id="btn-stop-simulator"
+
+class="btn btn-secondary">
+
+<i class="fa-solid fa-stop"></i>
+
+Stop
+
+</button>
+
+</div>
+
+<br>
+
+<div
+
+id="simulator-status"
+
+class="tag-live">
+
+Stopped
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+DATASET UPLOAD
+=========================================== -->
+
+<section
+
+id="tab-upload"
+
+class="tab-page">
+
+<div class="glass-panel form-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-upload"></i>
+
+Dataset Upload
+
+</h3>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Upload Dataset
+
+</label>
+
+<input
+
+type="file"
+
+id="dataset-file"
+
+class="form-control">
+
+</div>
+
+<div class="button-group">
+
+<button
+
+id="btn-upload"
+
+class="btn btn-primary">
+
+Upload
+
+</button>
+
+<button
+
+id="btn-validate"
+
+class="btn btn-secondary">
+
+Validate
+
+</button>
+
+</div>
+
+<br>
+
+<div
+
+id="upload-status"
+
+class="glass-panel">
+
+No dataset uploaded.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+MODAL
+=========================================== -->
+
+<div
+
+id="modal"
+
+class="modal-overlay">
+
+<div class="modal-card">
+
+<div class="modal-header">
+
+<h3>
+
+Notification
+
+</h3>
+
+<button
+
+class="btn-close-modal"
+
+onclick="closeModal()">
+
+×
+
+</button>
+
+</div>
+
+<div
+
+id="modal-content">
+
+Welcome to Supportlytics AI
+
+</div>
+
+<div class="modal-footer">
+
+<button
+
+class="btn btn-primary"
+
+onclick="closeModal()">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+ACTIVITY PANEL
+=========================================== -->
+
+<section
+
+id="tab-activity"
+
+class="tab-page">
+
+<div class="glass-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+Recent Activity
+
+</h3>
+
+<span class="tag-live">
+
+LIVE
+
+</span>
+
+</div>
+
+<div
+
+id="activity-feed"
+
+class="trace-timeline">
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+System Startup
+
+</div>
+
+<div class="step-details">
+
+Supportlytics AI Enterprise initialized successfully.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+NOTIFICATION PANEL
+=========================================== -->
+
+<section
+
+id="tab-notifications"
+
+class="tab-page">
+
+<div class="glass-panel">
+
+<div class="panel-header">
+
+<h3>
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</h3>
+
+</div>
+
+<div class="trace-timeline">
+
+<div class="trace-step-card">
+
+<div class="step-agent-name">
+
+No Notifications
+
+</div>
+
+<div class="step-details">
+
+System notifications will appear here.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+LOADING OVERLAY
+=========================================== -->
+
+<div
+
+id="loading-overlay"
+
+class="modal-overlay">
+
+<div class="modal-card">
+
+<div class="modal-header">
+
+<h3>
+
+Loading
+
+</h3>
+
+</div>
+
+<div
+style="text-align:center;padding:30px;">
+
+<i
+
+class="fa-solid fa-spinner fa-spin"
+
+style="font-size:40px;color:#6366f1;">
+
+</i>
+
+<p
+style="margin-top:20px;">
+
+Please wait...
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+FOOTER
+=========================================== -->
+
+<footer
+style="margin-top:25px;
+padding:15px;
+text-align:center;
+color:var(--text-muted);
+font-size:14px;">
+
+Supportlytics AI Enterprise v2.0 |
+Powered by FastAPI • SQLAlchemy • SQLite • AI Agents • Chart.js
+
+</footer>
+
+</main>
+
+</div>
+
+<!-- ==========================================
+JAVASCRIPT
+=========================================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
+
